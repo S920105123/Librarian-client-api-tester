@@ -2,19 +2,28 @@ import axios from 'axios';
 import uuid from 'uuid/v4';
 import HTMLParser from 'fast-html-parser';
 // Develop server URL
-const BaseUrl = 'http://localhost:8080/api';
+const BaseUrl = 'http://localhost:8080/api/NTHU';
 
 // Staging server URL
 // const BaseUrl = 'http://weathermood-staging.us-west-2.elasticbeanstalk.com/api';
 
-export function listPosts(searchText = '', start) {
+const byISBN=0;
+const byName=1;
+
+export function listPosts(searchText, type) {
+    // For test
+    type=0;
     searchText='123';
+
     if (!searchText || !searchText.trim()) {
         console.error("Error getting book - searchText cannot be empty.");
         return;
     }
     let url = `${BaseUrl}`;
-    url+="/NTHU/ISBN?searchText=";
+    if (type===byISBN)
+        url+="/ISBN?searchText=";
+    else
+        url+="/book?searchText=";
     url+=searchText;
 
     console.log(`Making GET request to: ${url}`);
