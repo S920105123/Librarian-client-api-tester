@@ -8,13 +8,13 @@ const BaseUrl = 'http://localhost:8080/api';
 // const BaseUrl = 'http://weathermood-staging.us-west-2.elasticbeanstalk.com/api';
 
 export function listPosts(searchText = '', start) {
-    searchText='123';
+    searchText='123aaaddadzxczxcsd';
     if (!searchText || !searchText.trim()) {
         console.error("Error getting book - searchText cannot be empty.");
         return;
     }
     let url = `${BaseUrl}`;
-    url+="/NTHU/book?searchText=";
+    url+="/NTHU/ISBN?searchText=";
     url+=searchText;
 
     console.log(`Making GET request to: ${url}`);
@@ -52,7 +52,7 @@ export function listPosts(searchText = '', start) {
             if (subStr[subStr.length-1]==="/")
                 subStr = subStr.slice(0,subStr.length-2); // Skip the trailing '/'
             result[i]['bookName'] = subStr;
-            console.log("BookName =",subStr);
+            //console.log("BookName =",subStr);
 
             /* Get author */
             subStr=''
@@ -68,7 +68,7 @@ export function listPosts(searchText = '', start) {
             if (subStr[0]==='/')
                 subStr = subStr.slice(1);
             result[i]['author'] = subStr;
-            console.log("Author =",subStr);
+            //console.log("Author =",subStr);
 
             /* Get location */
             subStr='';
@@ -80,7 +80,7 @@ export function listPosts(searchText = '', start) {
                 j++;
             }
             result[i]['location'] = [subStr];
-            console.log("Location =",subStr);
+            //console.log("Location =",subStr);
 
             idx = data.indexOf(titleFlag);
             j = data.indexOf(locationFlag,j)+locationFlag.length;
@@ -94,7 +94,7 @@ export function listPosts(searchText = '', start) {
                     j++;
                 }
                 result[i]['location'].push(subStr);
-                console.log("Location =",subStr);
+                //console.log("Location =",subStr);
             }
 
             i++;
