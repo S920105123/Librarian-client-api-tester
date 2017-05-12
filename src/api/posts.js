@@ -8,7 +8,7 @@ const BaseUrl = 'http://localhost:8080/api';
 // const BaseUrl = 'http://weathermood-staging.us-west-2.elasticbeanstalk.com/api';
 
 export function listPosts(searchText = '', start) {
-    searchText='123aaaddadzxczxcsd';
+    searchText='123';
     if (!searchText || !searchText.trim()) {
         console.error("Error getting book - searchText cannot be empty.");
         return;
@@ -97,13 +97,14 @@ export function listPosts(searchText = '', start) {
                 //console.log("Location =",subStr);
             }
 
+            result[i]['id'] = uuid();
             i++;
         }
 
         let temp = {
-            id: uuid(),
             data: result
         };
+        console.log("NTHU result:");
         console.log(temp);
 
         return temp;
